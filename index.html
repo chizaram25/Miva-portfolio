@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chizaram Obi is a full-stack developer focused on React, Node.js, MongoDB, and modern web experiences.">
+  <title>Chizaram Obi | Full-Stack Developer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero-header" id="top">
+    <div class="nav-container">
+      <nav class="nav-side nav-side-left" id="primaryNavLeft" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a class="logo" href="index.html" aria-label="Chizaram Obi home"><span class="logo-mark">CO</span><span>CHIZARAM OBI</span></a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNavLeft primaryNavRight">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <nav class="nav-side nav-side-right" id="primaryNavRight" aria-label="More navigation">
+        <ul>
+          <li><a href="planner.html">Planner</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false"></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="hero-greeting">HI, I'M CHIZARAM OBI</p>
+          <h1 class="hero-title">Curious by Nature.<br>Driven by Ideas. Defined by Growth.</h1>
+          <p class="hero-description">I'm a Software Engineering student at Miva Open University, exploring the intersection of technology, creativity, and innovation.</p>
+          <div class="button-row hero-buttons">
+            <a href="projects.html" class="hero-cta">Explore My Portfolio <span aria-hidden="true">→</span></a>
+            <a href="about.html" class="hero-cta hero-cta-secondary">Get to Know Me <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap" aria-label="Portrait of Chizaram Obi">
+          <div class="hero-image-fallback" aria-hidden="true">CO</div>
+          <img src="assets/profile.jpg" alt="Portrait of Chizaram Obi" class="hero-image">
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-labelledby="stats-heading">
+      <div class="container stats-inner">
+        <div class="stats-heading-wrap">
+          <p class="stats-eyebrow">A little about my journey</p>
+          <h2 id="stats-heading">Learning, building, and growing.</h2>
+        </div>
+        <div class="stats-grid">
+          <a class="stat-card" href="projects.html" aria-label="3 featured projects. View projects">
+            <span class="stat-value" data-count="3">0</span>
+            <span class="stat-label">Featured projects</span>
+            <span class="stat-hint">Explore my work <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="stat-card" href="about.html" aria-label="10 technologies in my toolkit. View skills">
+            <span class="stat-value" data-count="10">0</span>
+            <span class="stat-label">Technologies in my toolkit</span>
+            <span class="stat-hint">See my skills <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="stat-card stat-card-text" href="about.html" aria-label="MIVA Open University. Learn about my academic journey">
+            <span class="stat-value">MIVA</span>
+            <span class="stat-label">Open University</span>
+            <span class="stat-hint">My academic journey <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-cta-section" aria-labelledby="home-contact-title">
+      <div class="container contact-cta-inner">
+        <div class="contact-orbit" aria-hidden="true"><span></span></div>
+        <div class="contact-cta-copy">
+          <p class="stats-eyebrow">Have an idea or opportunity?</p>
+          <h2 id="home-contact-title">Let’s make something meaningful.</h2>
+          <p>I’m open to thoughtful conversations, collaborations, and opportunities to keep learning through real work.</p>
+        </div>
+        <a class="contact-cta-link" href="contact.html">Contact Me <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-connect">
+        <h2>Let’s Connect There</h2>
+      </div>
+      <div class="footer-divider" aria-hidden="true"></div>
+      <div class="footer-columns">
+        <div class="footer-about">
+          <a class="footer-brand" href="#top"><span class="footer-brand-mark">CO</span><span>CHIZARAM OBI</span></a>
+          <p>Software Engineering student at Miva Open University, exploring technology, creativity, and innovation.</p>
+          <a class="footer-about-link" href="about.html">More about me <span aria-hidden="true">↗</span></a>
+        </div>
+        <nav class="footer-column" aria-label="Footer navigation">
+          <h3>Navigation</h3>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="planner.html">Academic Planner</a>
+        </nav>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <p>Open to thoughtful conversations, collaborations, and opportunities to learn.</p>
+          <a href="contact.html">Send me a message <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-column footer-latest">
+          <h3>Latest work</h3>
+          <p>See selected projects and what I’m learning through each build.</p>
+          <a class="footer-work-link" href="projects.html">Explore my projects <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025 MIVA Open University All Rights Reserved</p>
+        <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
