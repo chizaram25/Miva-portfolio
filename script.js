@@ -1,4 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const resumeLinks = document.querySelectorAll("[data-resume-link]");
+  if (resumeLinks.length && typeof HTMLDialogElement !== "undefined") {
+    const resumeDialog = document.createElement("dialog");
+    resumeDialog.className = "resume-modal";
+    resumeDialog.id = "resumeModal";
+    resumeDialog.setAttribute("aria-labelledby", "resumeModalTitle");
+    resumeDialog.innerHTML = `
+      <div class="resume-modal-header">
+        <h2 id="resumeModalTitle">My resume</h2>
+        <button class="resume-modal-close" type="button" aria-label="Close resume" autofocus>&times;</button>
+      </div>
+      <iframe class="resume-preview" title="Chizaram Obi resume PDF"></iframe>
+      <p class="resume-modal-fallback">Having trouble viewing? <a target="_blank" rel="noopener noreferrer">Open PDF in a new tab</a></p>`;
+    document.body.appendChild(resumeDialog);
+    const resumePreview = resumeDialog.querySelector("iframe");
+    const resumeFallback = resumeDialog.querySelector("a");
+    let resumeTrigger;
+    resumeLinks.forEach((link) => {
+      link.setAttribute("aria-haspopup", "dialog");
+      link.setAttribute("aria-controls", "resumeModal");
+      link.addEventListener("click", (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        resumeTrigger = link;
+        resumePreview.src = link.href;
+        resumeFallback.href = link.href;
+        resumeDialog.showModal();
+        document.body.classList.add("resume-is-open");
+      });
+    });
+    resumeDialog.querySelector("button").addEventListener("click", () => resumeDialog.close());
+    resumeDialog.addEventListener("click", (event) => {
+      if (event.target !== resumeDialog) return;
+      const bounds = resumeDialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right
+        || event.clientY < bounds.top || event.clientY > bounds.bottom) resumeDialog.close();
+    });
+    resumeDialog.addEventListener("close", () => {
+      document.body.classList.remove("resume-is-open");
+      resumePreview.removeAttribute("src");
+      resumeTrigger?.focus();
+    });
+  }
+
   const hero = document.querySelector(".hero");
   if (!document.body.matches(".planner-body, .projects-body")) {
     const socialRail = document.createElement("nav");
