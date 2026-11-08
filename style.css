@@ -798,6 +798,52 @@ p {
   display: none;
 }
 
+.home-resume-section {
+  padding: 1rem 0 4.5rem;
+  background: #0b0b0b;
+  color: #fff;
+}
+.home-resume-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(255, 130, 56, 0.25);
+  border-radius: 20px;
+  background: linear-gradient(120deg, rgba(255, 130, 56, 0.07), transparent);
+}
+.home-resume-icon {
+  display: grid;
+  flex: 0 0 76px;
+  height: 90px;
+  place-items: center;
+  border: 1px solid rgba(255, 130, 56, 0.3);
+  border-radius: 12px;
+  color: #ff9a5d;
+}
+.home-resume-icon svg { width: 48px; height: 48px; }
+.home-resume-copy { flex: 1; min-width: 0; }
+.home-resume-copy h2 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.home-resume-copy > p:last-child { color: #aaa; font-size: 0.95rem; }
+.home-resume-card .resume-link { flex-shrink: 0; margin: 0; }
+body.is-light .home-resume-section { background: #f7f7f2; color: #202020; }
+body.is-light .home-resume-copy > p:last-child { color: #555; }
+body.is-light .home-resume-section .resume-link,
+body.is-light .home-resume-icon,
+body.is-light .home-resume-section .stats-eyebrow { color: #98400d; }
+@media (max-width: 600px) {
+  .home-resume-card { flex-wrap: wrap; gap: 1.25rem; }
+  .home-resume-icon { flex-basis: 52px; height: 64px; }
+  .home-resume-icon svg { width: 36px; height: 36px; }
+  .home-resume-copy { flex-basis: calc(100% - 80px); }
+  .home-resume-card .resume-link { flex-basis: 100%; }
+}
+
 .stats-section {
   padding: 2rem 0 4.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
