@@ -2126,7 +2126,49 @@ footer p {
   display: flex;
   gap: 0.65rem;
   margin: 0;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
+
+.planner-task-field { flex: 1 1 220px; min-width: 0; }
+.planner-deadline-field { flex: 0 1 180px; min-width: 0; }
+.planner-input label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: inherit;
+  font-size: 0.78rem;
+}
+.planner-input input { width: 100%; min-height: 48px; }
+.planner-input input[type="date"] { color-scheme: dark; }
+.task-content { flex: 1 1 220px; min-width: 0; }
+.task-text { display: block; overflow-wrap: anywhere; }
+.task-deadline-label {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  color: #aaa;
+  font-size: 0.78rem;
+}
+.task-deadline-input {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #777;
+  border-radius: 9px;
+  background: #222;
+  color: #eee;
+  color-scheme: dark;
+  font: inherit;
+}
+.task-deadline-input:focus-visible { outline: 2px solid #ff9a5d; outline-offset: 3px; }
+.planner-main.is-light .task-deadline-label { color: #555; }
+.planner-main.is-light .task-deadline-input { background: #fff; color: #282828; }
+.planner-main.is-light .task-deadline-input,
+.planner-main.is-light .planner-input input[type="date"] { color-scheme: light; }
+.planner-task-list .task-item.completed .task-text { color: #777; text-decoration: line-through; }
 
 .planner-input input {
   min-width: 0;
@@ -2399,6 +2441,8 @@ footer p {
   .planner-summary { width: 100%; }
   .planner-summary div { flex: 1; }
   .planner-input { align-items: stretch; flex-direction: column; }
+  .planner-task-field,
+  .planner-deadline-field { flex: 0 1 auto; width: 100%; }
   .planner-add-btn { width: 100%; }
   .planner-footer-inner { align-items: flex-start; flex-direction: column; }
   .planner-footer-inner > p { text-align: left; }

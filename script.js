@@ -272,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (addTaskBtn && taskInput && taskList) {
     const taskForm = document.getElementById("plannerTaskForm");
+    const taskDeadline = document.getElementById("taskDeadline");
     const status = document.getElementById("plannerStatus");
     const taskStatuses = {
       active: "Active",
@@ -279,6 +280,14 @@ document.addEventListener("DOMContentLoaded", () => {
       done: "Done",
       review: "Review",
       completed: "Completed"
+    };
+    const normalizeDeadline = (value) => {
+      if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return "";
+      const date = new Date(`${value}T00:00:00`);
+      return !Number.isNaN(date.getTime())
+        && date.getFullYear() === Number(value.slice(0, 4))
+        && date.getMonth() + 1 === Number(value.slice(5, 7))
+        && date.getDate() === Number(value.slice(8, 10)) ? value : "";
     };
     let tasks = [];
     try {
@@ -288,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .map((task) => {
             const taskStatus = Object.hasOwn(taskStatuses, task.status)
               ? task.status : task.completed === true ? "completed" : "active";
-            return { ...task, status: taskStatus, completed: taskStatus === "completed" };
+            return { ...task, status: taskStatus, completed: taskStatus === "completed", deadline: normalizeDeadline(task.deadline) };
           });
       }
     } catch {
@@ -324,6 +333,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const taskText = document.createElement("span");
         taskText.textContent = task.text;
+
+        const taskContent = document.createElement("div");
+        taskContent.className = "task-content";
+        taskText.className = "task-text";
+        const deadlineLabel = document.createElement("label");
+        deadlineLabel.className = "task-deadline-label";
+        deadlineLabel.textContent = "Deadline";
+        const deadlineInput = document.createElement("input");
+        deadlineInput.type = "date";
+        deadlineInput.className = "task-deadline-input";
+        deadlineInput.setAttribute("aria-label", `Deadline for ${task.text}`);
+        deadlineInput.value = task.deadline;
+        deadlineInput.addEventListener("change", () => {
+          if (!deadlineInput.checkValidity()) return;
+          task.deadline = normalizeDeadline(deadlineInput.value);
+          saveTasks();
+        });
+        deadlineLabel.appendChild(deadlineInput);
+        taskContent.append(taskText, deadlineLabel);
 
         const actions = document.createElement("div");
         actions.className = "task-actions";
@@ -364,7 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         actions.append(statusLabel, deleteBtn);
-        li.append(taskText, actions);
+        li.append(taskContent, actions);
         taskList.appendChild(li);
       });
 
@@ -382,8 +410,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      tasks.push({ id: Date.now(), text, status: "active", completed: false });
+      if (taskDeadline && !taskDeadline.reportValidity()) return;
+      tasks.push({ id: Date.now(), text, status: "active", completed: false, deadline: normalizeDeadline(taskDeadline?.value) });
       taskInput.value = "";
+      if (taskDeadline) taskDeadline.value = "";
       renderTasks();
       taskInput.focus();
     };

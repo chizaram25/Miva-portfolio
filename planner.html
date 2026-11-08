@@ -73,11 +73,17 @@
               <span class="planner-live-dot" aria-hidden="true"></span>
             </div>
             <form class="planner-input" id="plannerTaskForm">
-              <label class="visually-hidden" for="taskInput">New academic task</label>
-              <input type="text" id="taskInput" placeholder="Add an assignment, study session, or deadline" autocomplete="off" required>
+              <div class="planner-task-field">
+                <label for="taskInput">New academic task</label>
+                <input type="text" id="taskInput" placeholder="Add an assignment or study session" autocomplete="off" required>
+              </div>
+              <div class="planner-deadline-field">
+                <label for="taskDeadline">Deadline (optional)</label>
+                <input type="date" id="taskDeadline" name="deadline">
+              </div>
               <button id="addTaskBtn" class="planner-add-btn" type="submit"><span aria-hidden="true">+</span> Add task</button>
             </form>
-            <p class="planner-helper">Press Enter or select Add task. Use each task’s status menu to update your progress. Your tasks stay in this browser.</p>
+            <p class="planner-helper">Add a task with an optional deadline. Update its deadline or status at any time. Your tasks stay in this browser.</p>
             <p id="plannerStatus" class="planner-helper" role="status"></p>
             <ul id="taskList" class="task-list planner-task-list" aria-live="polite"></ul>
           </section>
