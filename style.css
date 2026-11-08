@@ -825,14 +825,16 @@ p {
 .home-resume-copy { flex: 1; min-width: 0; }
 .home-resume-copy h2 {
   margin: 0 0 0.65rem;
-  color: inherit;
+  color: #fff;
   font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
+.home-resume-copy .stats-eyebrow { color: #ff9a5d; }
 .home-resume-copy > p:last-child { color: #c8c8c8; font-size: 0.95rem; }
 .home-resume-card .resume-link { flex-shrink: 0; margin: 0; }
 body.is-light .home-resume-section { background: #f7f7f2; color: #202020; }
+body.is-light .home-resume-copy h2 { color: #202020; }
 body.is-light .home-resume-copy > p:last-child { color: #555; }
 body.is-light .home-resume-section .resume-link,
 body.is-light .home-resume-icon,
